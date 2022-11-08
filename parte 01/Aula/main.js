@@ -1,10 +1,13 @@
-function tocaSomPom(){
-    document.querySelector('#som_tecla_pom').play();
+function tocaSom(idElementoSom){
+    document.querySelector(`#${idElementoSom}`).play();
 }
 
-function tocaSomClap(){
-    document.querySelector('#som_tecla_clap').play();
-}
+const listaDeButoes = document.querySelectorAll('.tecla');
 
-document.querySelector('.tecla_pom').onclick = tocaSomPom;
-document.querySelector('.tecla_clap').onclick = tocaSomClap;
+listaDeButoes.forEach(butao => {
+    let idNome = butao.classList[1];
+    
+    butao.onclick = function(){
+        tocaSom(`som_${idNome}`);
+    }
+});
